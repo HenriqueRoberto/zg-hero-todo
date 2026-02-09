@@ -19,6 +19,7 @@ public class TaskController {
 
     validateRequired(name, priority);
     validatePriority(priority);
+    validateEndDate(endDate);
 
     if (status == null) status = TaskStatus.TODO;
 
@@ -67,10 +68,18 @@ public class TaskController {
        task.setDescription(updateTask.getDescription());
      }
 
+
      // END DATE (pode ser null)
      if (!Objects.equals(updateTask.getEndDate(), task.getEndDate())) {
+
+       // só valida se não for null
+       if (updateTask.getEndDate() != null) {
+         validateEndDate(updateTask.getEndDate());
+       }
+
        task.setEndDate(updateTask.getEndDate());
      }
+
 
      // PRIORITY (não pode ser null)
      if (updateTask.getPriority() != null &&
@@ -209,6 +218,14 @@ public class TaskController {
     }
 
   }
+ //Data não pode ser passado
+  private void validateEndDate(LocalDate date) {
+    if (date != null && date.isBefore(LocalDate.now())) {
+      throw new IllegalArgumentException("End date cannot be in the past.");
+    }
+  }
 
 
 }
+
+
