@@ -100,6 +100,7 @@ public class MenuView {
 
     TaskStatus status = readOptionalStatus("Status (TODO/DOING/DONE) (opcional, enter = TODO): ");
 
+
     if (description != null && description.isBlank()) description = null;
     if (category != null && category.isBlank()) category = null;
 
