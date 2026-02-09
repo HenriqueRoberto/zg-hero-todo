@@ -100,7 +100,7 @@ public class MenuView {
 
     TaskStatus status = readOptionalStatus("Status (TODO/DOING/DONE) (opcional, enter = TODO): ");
 
-    // se você quer realmente null para opcionais:
+
     if (description != null && description.isBlank()) description = null;
     if (category != null && category.isBlank()) category = null;
 
@@ -143,7 +143,7 @@ public class MenuView {
     if (!name.isBlank()) patch.setName(name);
 
     // opcionais: se o usuário só apertar enter, fica "" -> vamos ignorar update
-    // (se você quiser permitir limpar, você pode mudar essa regra depois)
+
     if (!description.isBlank()) patch.setDescription(description);
     if (endDate != null) patch.setEndDate(endDate);
     if (priority != null) patch.setPriority(priority);
