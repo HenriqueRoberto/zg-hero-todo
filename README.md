@@ -2,7 +2,6 @@
 
 Aplicação de **Lista de Tarefas (TODO List)** desenvolvida em **Java**, executada via **terminal (CLI)**.  
 
-
 ---
 
 ## Funcionalidades
@@ -31,6 +30,17 @@ Aplicação de **Lista de Tarefas (TODO List)** desenvolvida em **Java**, execut
 - **Rebalanceamento automático por prioridade**
 - **Data de término não pode estar no passado**
 - **Update parcial** (altera apenas campos alterados)
+
+---
+
+## Front-end Web
+
+Também foi desenvolvido um **front-end web** para a aplicação, responsável pela interface visual de gerenciamento das tarefas. A interface segue um modelo **Kanban**, com colunas **TODO, DOING e DONE**, permitindo **criar, visualizar, editar, filtrar e excluir tarefas**, além de organizá-las automaticamente por **prioridade** e separá-las por **workspaces**. Atualmente o front-end funciona apenas **em memória no navegador**, sem persistência de dados, servindo como **protótipo funcional da interface**. Futuramente ele será **integrado ao back-end em Java**, consumindo as funcionalidades da aplicação por meio de uma API.
+
+### Tecnologias do Front-end
+- HTML5
+- CSS3
+- JavaScript (Vanilla JS)
 
 ---
 
