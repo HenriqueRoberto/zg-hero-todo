@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-do List</title>
+    <link rel="icon" type="image/png" href="assets/img/site-icon.png" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/reset.css" />
+    <link rel="stylesheet" href="assets/css/header.css" />
+    <link rel="stylesheet" href="assets/css/aside.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+  </head>
+  <body>
+    <div class="layout center">
+      <!-- header -->
+      <header class="flex-center">
+        <h3>TO-DO LIST</h3>
+        <nav class="nav-list flex-center center">
+          <li class="nav-item">
+            <div class="dropdown">
+              <button class="btn-dropdown" type="button">Categorias</button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#"></a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <div class="dropdown">
+              <button class="btn-dropdown" type="button">Prioridade</button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">1</a></li>
+                <li><a class="dropdown-item" href="#">2</a></li>
+                <li><a class="dropdown-item" href="#">3</a></li>
+                <li><a class="dropdown-item" href="#">4</a></li>
+                <li><a class="dropdown-item" href="#">5</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <div class="dropdown">
+              <button class="btn-dropdown" type="button">Status</button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">TODO</a></li>
+                <li><a class="dropdown-item" href="#">DOING</a></li>
+                <li><a class="dropdown-item" href="#">DONE</a></li>
+              </ul>
+            </div>
+          </li>
+        </nav>
+      </header>
+
+      <div class="container">
+        <!-- aside -->
+        <aside>
+          <h2>Projetos</h2>
+          <div id="workspace-area" class="workspace-area"></div>
+          <button id="btn-add-aside" class="btn-aside">Criar Projeto</button>
+        </aside>
+
+        <!-- main -->
+        <main>
+          <div id="tasks-container" class="task-container">
+            <!-- coluna todo -->
+            <div class="group-column-task">
+              <div class="column-task todo">
+                <div class="column-header">TO-DO</div>
+                <!-- campo da coluna -->
+                <div id="todo" class="task-board"></div>
+              </div>
+              <!-- coluna doing -->
+              <div class="column-task doing">
+                <div class="column-header">Doing</div>
+                <div id="doing" class="task-board"></div>
+              </div>
+              <!-- coluna done -->
+              <div class="column-task done">
+                <div class="column-header">Done</div>
+                <div id="done" class="task-board"></div>
+              </div>
+            </div>
+            <div class="column-utils">
+              <button id="btn-trash" class="btn-trash">
+                <img src="assets/img/trash-opacity.png" alt="Lixo" />
+              </button>
+              <button id="btn-create-task" class="btn-create-task">+</button>
+            </div>
+          </div>
+
+          <!-- card -->
+          <div id="task-template" class="task-card task-template">
+            <div class="task-card-header"></div>
+
+            <div class="task-card-body">
+              <h3 class="task-title"></h3>
+
+              <div class="task-meta">
+                <span class="task-date"></span>
+                <span class="task-priority"></span>
+              </div>
+            </div>
+          </div>
+          <!-- visualizar task -->
+          <div id="view-overlay" class="overlay">
+            <div id="view-task-modal" class="task-view-modal">
+              <div class="task-card-header view-header"></div>
+
+              <div class="task-view-content">
+                <input type="text" id="view-title" maxlength="100" required />
+
+                <label for="view-description">Descrição</label>
+                <textarea
+                  id="view-description"
+                  placeholder="Digite a descrição da tarefa"
+                ></textarea>
+
+                <div class="view-info">
+                  <div class="view-group-container">
+                    <div class="view-group">
+                      <label for="view-deadline">Data de término</label>
+                      <input id="view-deadline" type="date" />
+                    </div>
+
+                    <div class="view-group">
+                      <label for="view-priority">Prioridade</label>
+                      <select id="view-priority">
+                        <option value="1">1 - Muito alta</option>
+                        <option value="2">2</option>
+                        <option value="3">3 - Média</option>
+                        <option value="4">4</option>
+                        <option value="5">5 - Muito baixa</option>
+                      </select>
+                    </div>
+
+                    <div class="view-group">
+                      <label for="view-status">Status</label>
+                      <select id="view-status">
+                        <option value="todo">TODO</option>
+                        <option value="doing">DOING</option>
+                        <option value="done">DONE</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <label for="view-category">Categoria</label>
+                <input id="view-category" type="text" />
+
+                <button id="save-task">Salvar</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Criar task -->
+          <div id="create-overlay" class="overlay">
+            <div id="create-task" class="create-task">
+              <h2>Criar Tarefa</h2>
+              <!-- Nome;
+              Descrição;
+              Data de término;
+              Nível de prioridade de 1 a 5;
+              Categoria;
+              Status (todo, doing e done). -->
+
+              <!-- form - criar task -->
+              <form id="task-form" class="task-form">
+                <!-- Nome -->
+                <div class="form-group">
+                  <label for="task-name">Nome</label>
+                  <input
+                    type="text"
+                    id="task-name"
+                    name="name"
+                    required
+                    maxlength="100"
+                  />
+                </div>
+
+                <!-- Descrição -->
+                <div class="form-group">
+                  <label for="description">Descrição</label>
+                  <textarea
+                    id="description"
+                    name="description"
+                    maxlength="120"
+                    placeholder="Digite a descrição da task"
+                  ></textarea>
+                </div>
+
+                <!-- Data de término -->
+                <div class="form-group">
+                  <label for="task-deadline">Data de término</label>
+                  <input type="date" id="task-deadline" name="deadline" />
+                </div>
+
+                <!-- Nível de prioridade -->
+                <div class="form-group">
+                  <label for="task-priority">Nível de prioridade</label>
+                  <select id="task-priority" name="priority" required>
+                    <option value="">Selecione</option>
+                    <option value="1">1 - Muito alta</option>
+                    <option value="2">2</option>
+                    <option value="3">3 - Média</option>
+                    <option value="4">4</option>
+                    <option value="5">5 - Muito baixa</option>
+                  </select>
+                </div>
+
+                <!-- Categoria -->
+                <div class="form-group">
+                  <label for="task-category">Categoria</label>
+                  <input
+                    type="text"
+                    id="task-category"
+                    name="category"
+                    placeholder="Ex: Trabalho, Estudo..."
+                  />
+                </div>
+
+                <!-- Status -->
+                <div class="form-group">
+                  <label for="task-status">Status</label>
+                  <select id="task-status" name="status" required>
+                    <option value="todo">TODO</option>
+                    <option value="doing">DOING</option>
+                    <option value="done">DONE</option>
+                  </select>
+                </div>
+
+                <!-- Botão -->
+                <div class="form-group">
+                  <button type="submit" id="btn-submit-task" class="btn-submit">
+                    Criar Task
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+  <script src="assets/js/script.js"></script>
+</html>
