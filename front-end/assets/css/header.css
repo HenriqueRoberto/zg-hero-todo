@@ -1,0 +1,132 @@
+header {
+  width: 100%;
+  height: 10vh;
+  padding: 1rem 5rem;
+  background: var(--bg-grey);
+  box-shadow: 0 1.7rem 1.4rem -2.2rem rgb(78, 78, 78);
+  position: relative;
+  z-index: 1;
+}
+
+header h3 {
+  position: absolute;
+  font-size: 2rem;
+  font-weight: bold;
+  /* Define o gradiente */
+  background: linear-gradient(to right, var(--light-blue), var(--yellow));
+  /* Clipa o fundo para o formato do texto */
+  -webkit-background-clip: text;
+  background-clip: text;
+  /* Torna a cor do texto transparente para mostrar o fundo */
+  -webkit-text-fill-color: transparent;
+  color: transparent; /* Fallback */
+  display: inline-block; /* Garante que o gradiente cubra o texto */
+}
+
+/* nav - filtros - dropdown */
+
+.nav-list {
+  list-style-type: none;
+}
+
+.nav-item {
+  margin: 0 1.2rem;
+}
+
+.btn-dropdown {
+  width: 14rem;
+  height: 4rem;
+
+  border-top: transparent;
+  border-left: transparent;
+  border-right: transparent;
+  border-bottom: 0.2rem solid var(--yellow);
+
+  background-color: transparent;
+  font-family: inherit;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: white;
+
+  line-height: 1rem;
+  letter-spacing: 0.1rem;
+
+  cursor: pointer;
+}
+
+ul.dropdown-menu {
+  display: grid;
+  text-align: center;
+  list-style-type: none;
+  position: absolute;
+
+  margin: 0.2rem 0 0 0.2rem;
+  padding: 1rem;
+  width: 13.5rem;
+
+  border-radius: 0.2rem;
+  border-top: transparent !important;
+  border: 0.1rem solid var(--dark);
+
+  background-color: var(--bg-grey);
+
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: var(--transition-slow);
+  pointer-events: none;
+}
+
+ul.dropdown-menu.active-dropdown {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  z-index: 1;
+}
+
+ul.dropdown-menu li:hover {
+  background-color: var(--hover-grey);
+}
+
+ul.dropdown-menu li {
+  margin-bottom: 0.6rem;
+  font-size: inherit;
+}
+
+a.dropdown-item {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+}
+
+@media screen and (max-width: 768px) {
+  header {
+    flex-direction: column;
+  }
+
+  .nav-list {
+    position: relative;
+    top: 42%;
+  }
+  .btn-dropdown {
+    font-size: 1.5rem;
+  }
+}
+@media screen and (max-width: 1024px) and (min-width: 768px) {
+  header h3 {
+    position: unset;
+  }
+}
+
+@media screen and (min-width: 2500px) {
+  header h3 {
+    font-size: 3.5rem;
+  }
+  .btn-dropdown {
+    font-size: 3.2rem;
+    width: 20rem;
+  }
+
+  ul.dropdown-menu {
+    width: 9%;
+  }
+}
